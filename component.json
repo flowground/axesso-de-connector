@@ -1,0 +1,102 @@
+{
+    "title": "Axesso Api",
+    "description": "Use this api to fetch information to Amazon products and more.",
+    "docsUrl": "http://api-doc.axesso.de/",
+    "url": "https://api.apis.guru/v2/specs/axesso.de/1.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.axesso.de/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "requestBuyRecommendation": {
+            "main": "./lib/actions/requestBuyRecommendation.js",
+            "title": "request buy recommendations to a given product",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/requestBuyRecommendation.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "requestProduct": {
+            "main": "./lib/actions/requestProduct.js",
+            "title": "lookup product information",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/requestProduct.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "keywordSearch": {
+            "main": "./lib/actions/keywordSearch.js",
+            "title": "fetch results auf a keyword search on Amazon",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/keywordSearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "sortOptions": {
+            "main": "./lib/actions/sortOptions.js",
+            "title": "request available sort options to use in keyword search",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/sortOptions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

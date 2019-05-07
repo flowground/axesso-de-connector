@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "properties": {
+        "keyword": {
+            "required": true,
+            "type": "string"
+        },
+        "domainCode": {
+            "required": true,
+            "type": "string"
+        },
+        "sortBy": {
+            "type": "string",
+            "default": "relevanceblender"
+        },
+        "numberOfProducts": {
+            "type": "integer",
+            "default": 20
+        }
+    }
+}
